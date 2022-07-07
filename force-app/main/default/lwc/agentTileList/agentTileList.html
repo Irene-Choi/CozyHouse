@@ -1,0 +1,32 @@
+<template>
+
+      <template if:true={agents.data}>
+          <div class="slds-grid slds-wrap">
+              <template
+                  for:each={agents.data.records}
+                  for:item="agent"
+              >
+                  <c-agent-tile
+                    agent={agent}
+                    key={agent.Id}
+                    onselected={handleAgentSelected}
+                    class="slds-col slds-var-m-around_xx-small"
+                  ></c-agent-tile>
+              </template>
+          </div>
+          <c-paginator
+              page-number={pageNumber}
+              page-size={pageSize}
+              total-item-count={agents.data.totalItemCount}
+              onprevious={handlePreviousPage}
+              onnext={handleNextPage}
+          ></c-paginator>
+      </template>
+      <template if:true={agents.error}>
+          <c-error-panel
+              friendly-message="Error retrieving data"
+              errors={agents.error}
+          ></c-error-panel>
+      </template>
+
+</template>

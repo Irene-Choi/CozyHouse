@@ -1,0 +1,40 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <lightning-card icon-name="custom:custom85">
+      <template if:true={agent.data}>
+          <lightning-button-icon
+            icon-name="utility:back"
+            slot="actions"
+            onclick={handleNavigateToBack}
+          ></lightning-button-icon>
+
+          <span slot="title">{agentName}</span>
+
+          <div class="slds-var-m-horizontal_medium">
+              <img
+                  src={pictureURL}
+                  alt="Agent picture"
+                  class="slds-var-m-bottom_x-small"
+              />
+              <lightning-record-form
+                  object-api-name="Broker__c"
+                  record-id={agentId}
+                  fields={agentFields}
+                  columns="2"
+              >
+              </lightning-record-form>
+          </div>
+      </template>
+      <template if:false={agentId}>
+          <c-error-panel
+              friendly-message="Select an agent to see details"
+          ></c-error-panel>
+      </template>
+      <template if:true={agent.error}>
+          <c-error-panel
+              friendly-message="Error retrieving data"
+              errors={agent.error}
+          ></c-error-panel>
+      </template>
+  </lightning-card>
+</template>

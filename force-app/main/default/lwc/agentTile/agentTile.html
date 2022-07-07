@@ -1,0 +1,12 @@
+<template>
+  <a onclick={handleNavigateToRecord}>
+      <div class="tile">
+        <image src={agent.Picture__c} />
+        <div class="detailed">
+            <h1 class="truncate">{agent.Name}</h1>
+            <p>{agent.Title__c}</p>
+            <p>{agent.Mobile_Phone__c}</p>
+        </div>
+      </div>
+  </a>
+</template>
