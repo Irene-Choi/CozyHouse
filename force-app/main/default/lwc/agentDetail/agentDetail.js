@@ -20,7 +20,7 @@ import DESC_FIELD from '@salesforce/schema/Broker__c.Description__c';
 
 export default class AgentDetail extends NavigationMixin(LightningElement) {
     //agentId;
-    agentFields = [EMAIL_FIELD, MOBILE_FIELD, PHONE_FIELD, TITLE_FIELD, DESC_FIELD];
+    agentFields = [TITLE_FIELD, EMAIL_FIELD, MOBILE_FIELD, PHONE_FIELD];
     subscription = null;
     currentPageReference = null; 
     urlStateParameters = null;
@@ -30,7 +30,7 @@ export default class AgentDetail extends NavigationMixin(LightningElement) {
 
     @wire(getRecord, {
         recordId: '$agentId',
-        fields: [NAME_FIELD, PICTURE_FIELD]
+        fields: [NAME_FIELD, PICTURE_FIELD, DESC_FIELD]
     })
     agent;
 
@@ -61,6 +61,10 @@ export default class AgentDetail extends NavigationMixin(LightningElement) {
 
     get pictureURL() {
         return getFieldValue(this.agent.data, PICTURE_FIELD);
+    }
+
+    get description() {
+        return getFieldValue(this.agent.data, DESC_FIELD);
     }
 
     connectedCallback() {

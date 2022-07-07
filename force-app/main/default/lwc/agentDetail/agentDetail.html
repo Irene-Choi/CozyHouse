@@ -1,40 +1,46 @@
 <!-- sldsValidatorIgnore -->
 <template>
-  <lightning-card icon-name="custom:custom85">
-      <template if:true={agent.data}>
-          <lightning-button-icon
-            icon-name="utility:back"
-            slot="actions"
-            onclick={handleNavigateToBack}
-          ></lightning-button-icon>
+    <template if:true={agent.data}>
+        <lightning-button-icon
+        icon-name="utility:back"
+        slot="actions"
+        onclick={handleNavigateToBack}
+        ></lightning-button-icon>
 
-          <span slot="title">{agentName}</span>
+        <div class="agentname">{agentName}</div>
+        <div class="main-area">
+            <div class="agent-card">
+                <lightning-card>
+                    <img
+                        src={pictureURL}
+                        alt="Agent picture"
+                        class="slds-var-m-bottom_x-small"
+                    />
+                    <lightning-record-form
+                        object-api-name="Broker__c"
+                        record-id={agentId}
+                        fields={agentFields}
+                        columns="1"
+                    >
+                    </lightning-record-form>
+                </lightning-card>
+            </div>
+            <div class="agent-right">
+                <p>{description}</p>
+            </div>
+        </div>
 
-          <div class="slds-var-m-horizontal_medium">
-              <img
-                  src={pictureURL}
-                  alt="Agent picture"
-                  class="slds-var-m-bottom_x-small"
-              />
-              <lightning-record-form
-                  object-api-name="Broker__c"
-                  record-id={agentId}
-                  fields={agentFields}
-                  columns="2"
-              >
-              </lightning-record-form>
-          </div>
-      </template>
-      <template if:false={agentId}>
-          <c-error-panel
-              friendly-message="Select an agent to see details"
-          ></c-error-panel>
-      </template>
-      <template if:true={agent.error}>
-          <c-error-panel
-              friendly-message="Error retrieving data"
-              errors={agent.error}
-          ></c-error-panel>
-      </template>
-  </lightning-card>
+    </template>
+    <template if:false={agentId}>
+        <c-error-panel
+            friendly-message="Select an agent to see details"
+        ></c-error-panel>
+    </template>
+    <template if:true={agent.error}>
+        <c-error-panel
+            friendly-message="Error retrieving data"
+            errors={agent.error}
+        ></c-error-panel>
+    </template>
+
 </template>

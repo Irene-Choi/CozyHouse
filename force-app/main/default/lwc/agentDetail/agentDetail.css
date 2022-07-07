@@ -1,36 +1,29 @@
-.tile {
-  position: relative;
-  height: 220px;
-  width: 220px;
+.agentname {
+  font-size: xx-large;
 }
 
-.detailed {
-  position: absolute;
-  text-align: center;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  color: rgb(98, 98, 98);
-  padding: 6px 8px;
+.main-area {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.detailed > p {
-  padding: 0;
-  margin: 0;
+.agent-card {
+  display: inline-block;
+  width: 350px;
 }
 
-.detailed h1 {
-  font-size: 16px !important;
-}
-
-.truncate {
-  font-style: bold;
+.agent-right {
+  display: inline-block;
+  font-size: medium;
+  width: 700px;
+  padding-left: 50px;
 }
 
 img, image {
-  width: 140px;
-  height: 140px;
-  border-radius: 5%;
+  width: 300px;
+  height: 300px;
+  /* border-radius: 5%; */
   align-content: center;
   display: block;
   margin-left: auto;
